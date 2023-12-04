@@ -1,5 +1,5 @@
 {
-  "include": [".eslintrc.js", "./src/**/*"],
+  "include": [".eslintrc.js", "jest.config.ts", "./src/**/*"],
   "compilerOptions": {
     "strict": true,
     "lib": ["dom", "es2015"],
