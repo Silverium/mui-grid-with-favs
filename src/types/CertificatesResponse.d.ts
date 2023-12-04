@@ -1,4 +1,4 @@
-export type CertificateItem = {
+export interface CertificateItem {
     id: number;
     uniqueNumber: string;
     companyName: string;
@@ -12,9 +12,9 @@ export type CertificateItem = {
             }
         }
     }
-};
-export type CertificatesResult = {
+}
+export interface CertificatesResult {
     result: {
         data: CertificateItem[];
     }
-};
+}

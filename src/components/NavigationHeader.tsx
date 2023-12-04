@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, IconButton, Box } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import { type FC } from "react";
+import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Typography, Button, IconButton, Box } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
-const NavigationHeader: React.FC = () => {
+const NavigationHeader: FC = () => {
   return (
     <AppBar position="static">
-      <Toolbar style={{ justifyContent: 'space-between' }}>
+      <Toolbar style={{ justifyContent: "space-between" }}>
         <Box display="flex" flexDirection={"row"}>
           <Typography variant="h6">Carbon Certificates App</Typography>
           <Button component={Link} to="/" color="inherit">Home</Button>

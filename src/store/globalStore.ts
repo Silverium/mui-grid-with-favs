@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import toaster from './toaster';
-import favoriteCertificates from './favoriteCertificates';
+import { configureStore } from "@reduxjs/toolkit";
+import toaster from "./toaster";
+import favoriteCertificates from "./favoriteCertificates";
 const store = configureStore({
     reducer: {
         toaster: toaster.reducer,

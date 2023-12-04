@@ -1,6 +1,6 @@
-import { CertificatesResult } from "@/types/CertificatesResponse";
+import { type CertificateItem, type CertificatesResult } from "@/types/CertificatesResponse";
 
-export const getCertificates = async () => {
+export const getCertificates = async (): Promise<CertificateItem[]> => {
   try {
     const response = await fetch("https://demo.api.agreena.com/api/public/carbon_registry/v1/certificates?includeMeta=true&page=1&limit=10", {
       headers: {
@@ -9,7 +9,7 @@ export const getCertificates = async () => {
     });
     const { result: { data } }: CertificatesResult = await response.json();
     return data.flatMap((certificate) => {
-      return certificate.combinedCertificates || certificate;
+      return certificate.combinedCertificates ?? certificate;
     });
   } catch (err) {
     console.error(err);

@@ -1,12 +1,11 @@
-import React from "react";
 import { Alert, Snackbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/globalStore";
+import { type RootState } from "@/store/globalStore";
 import toasterSlice from "../store/toaster";
 
-const Toaster = () => {
+const Toaster: React.FC = () => {
     const dispatch = useDispatch();
-    const handleClose = () => {
+    const handleClose = (): void => {
         dispatch(toasterSlice.actions.close())
     };
     const { message, isOpen, severity, autoHideDuration } = useSelector((state: RootState) => state.toaster);
@@ -16,7 +15,7 @@ const Toaster = () => {
         autoHideDuration={autoHideDuration}
         onClose={handleClose}
     >
-        <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
+        <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
             {message}
         </Alert>
     </Snackbar>)

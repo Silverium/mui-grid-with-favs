@@ -1,8 +1,8 @@
 // this is a function that generates prime numbers from 2 to n, but it's very slow and has no caching strategy
 // in any case the use case is just for testing purposes, so it's fine.
 // I wouldn't run this function in production, I would rather have a collection of prime numbers and use that instead
-export default function generatePrimeNumbersObject(n: number): { [key: number]: boolean } {
-    const primes: { [key: number]: boolean } = {};
+export default function generatePrimeNumbersObject(n: number): Record<number, boolean> {
+  const primes: Record<number, boolean> = {};
   
     for (let i = 2; i <= n; i++) {
       let isPrime = true;
