@@ -1,14 +1,13 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import {
-    GridColDef,
+    type GridColDef,
 } from "@mui/x-data-grid";
-import TurnedInNotIcon from '@mui/icons-material/TurnedInNot';
-import TurnedInIcon from '@mui/icons-material/TurnedIn';
+import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
+import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import { Typography, Tooltip } from "@mui/material";
 import copyToClipboard from "../../utils/copyToClipboard";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/globalStore";
+import { type RootState } from "../../store/globalStore";
 import favoriteCertificatesSlice from "../../store/favoriteCertificates";
 
 export const certificatesColumnsDefinitions: GridColDef[] = [
@@ -23,7 +22,10 @@ export const certificatesColumnsDefinitions: GridColDef[] = [
                         },
                     },
                 }}>
-                    <Box onClick={() => copyToClipboard(params.row.uniqueNumber)} justifySelf={"center"} flex={1} flexDirection="column" display="flex" overflow="hidden">
+                    <Box onClick={() => {
+                        void copyToClipboard(params.row.uniqueNumber);
+                    }
+                    } justifySelf={"center"} flex={1} flexDirection="column" display="flex" overflow="hidden">
                         <Typography noWrap textOverflow={"ellipsis"}>{params.value}</Typography>
                     </Box>
                 </Tooltip>
@@ -73,11 +75,11 @@ export const certificatesColumnsDefinitions: GridColDef[] = [
     },
     { field: "status", width: 120, headerName: "Status", },
     {
-        field: "favorite", width: 5, headerName: "", type: "boolean", renderCell(params) {
+        field: "favorite", width: 5, headerName: "", type: "boolean", renderCell: function RenderFavoriteCell(params) {
             const favoriteCertificates = useSelector((state: RootState) => state.favoriteCertificates);
             const dispatch = useDispatch();
-            const isFavorite = favoriteCertificates![params.row.uniqueNumber];
-            const toggleFavorite = () => {
+            const isFavorite = favoriteCertificates[params.row.uniqueNumber];
+            const toggleFavorite = (): void => {
                 dispatch(favoriteCertificatesSlice.actions.toggleFavorite(params.row.uniqueNumber));
             }
 

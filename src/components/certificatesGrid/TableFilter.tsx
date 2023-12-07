@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import {
   DataGrid,
@@ -8,11 +7,12 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { certificatesColumnsDefinitions } from "./config"
 import getCertificates from "../../services/getCertificates";
-import { CertificateItem } from "@/types/CertificatesResponse";
+import { type CertificateItem } from "@/types/CertificatesResponse";
+import type React from "react";
 
 
 
-export default function QuickFilteringGrid() {
+const QuickFilteringGrid: React.FC = () => {
 
   const query = useQuery<CertificateItem[]>({
     queryKey: ["posts"],
@@ -26,13 +26,13 @@ export default function QuickFilteringGrid() {
         sx={{
           boxShadow: 2,
           border: 2,
-          borderColor: 'primary.light',
-          '& .MuiDataGrid-cell:hover': {
-            color: 'primary.main',
+          borderColor: "primary.light",
+          "& .MuiDataGrid-cell:hover": {
+            color: "primary.main",
           },
-          '& .MuiDataGrid-columnHeader': {
-            color: 'GrayText',
-            textTransform: 'uppercase',
+          "& .MuiDataGrid-columnHeader": {
+            color: "GrayText",
+            textTransform: "uppercase",
           },
         }}
         rows={query.data}
@@ -50,3 +50,4 @@ export default function QuickFilteringGrid() {
     </Box>
   );
 }
+export default QuickFilteringGrid;
